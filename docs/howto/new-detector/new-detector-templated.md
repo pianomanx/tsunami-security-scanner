@@ -115,6 +115,8 @@ the `cve/YYYY/` directory.
 name you can try to describe it, for example `PreauthRCE`. The vulnerability
 will then be placed in the directory that matches the type of vulnerability,
 for example `rce/YYYY/VulnerableApplicationName_YYYY_VulnerabilityName`.
+- When the name of a plugin contains an accronym (e.g. `HTTP`, `UI`, `RCE`),
+that acronym must be in uppercase.
 
 ### Providing information about our plugin and the vulnerability
 
@@ -478,6 +480,7 @@ for these :
 
 - `T_` stands for Tsunami and identifies a variable that is provided by the
 core engine;
+- `_UTL_` stands for utility and provides various utility variables;
 - `_NS_` stands for network service and provide information about the currently
 scanned network service;
 - `_CBS_` stands for callback server and provides information about the
@@ -485,6 +488,10 @@ callback server.
 
 Here is the list of variables that are provided:
 
+- `T_UTL_CURRENT_TIMESTAMP_MS`: Provides the current timestamp in milliseconds.
+Note that the timestamp is computed at the beginning of a workflow run. It will
+thus be different between services but always return the same value within one
+run;
 - `T_NS_BASEURL`: The base URL of the network service being scanned. For example
 `http://127.0.0.1:9090` or `http://hostname.lan:1000`;
 - `T_NS_PROTOCOL`: The protocol used by the network service being scanned (e.g.
